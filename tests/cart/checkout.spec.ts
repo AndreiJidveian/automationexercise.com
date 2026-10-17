@@ -38,6 +38,7 @@ test('add to cart', async ({ page }) => {
     //validate that product is displayed in the cart
     await expect(page.getByText('Rs. 400')).toBeVisible();
 
+    await page.getByText('Add to cart').nth(1).click();
     //navigate to checkout page
     await page.getByText('Proceed To Checkout').click();
 

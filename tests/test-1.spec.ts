@@ -1,5 +1,30 @@
 import { test, expect } from '@playwright/test';
 
 test('test', async ({ page }) => {
-  // Recording...
+  await page.goto('https://automationexercise.com/');
+  await page.getByRole('link', { name: ' Signup / Login' }).click();
+  await page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address').click();
+  await page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address').click();
+  await page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address').click();
+  await page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address').fill('Toto@yopmail.com');
+  await page.locator('form').filter({ hasText: 'Login' }).getByPlaceholder('Email Address').press('Tab');
+  await page.getByRole('textbox', { name: 'Password' }).fill('Test1234');
+  await page.getByRole('button', { name: 'Login' }).click();
+  await page.getByRole('textbox', { name: 'Password' }).click();
+  await page.getByRole('textbox', { name: 'Password' }).click();
+  await page.getByRole('textbox', { name: 'Password' }).fill('Test123');
+  await page.getByRole('textbox', { name: 'Password' }).press('Enter');
+  await page.getByRole('button', { name: 'Login' }).click();
+  await page.getByText('Login to your account Your email or password is incorrect! Login OR New User').click();
+  await page.getByRole('textbox', { name: 'Password' }).click();
+  await page.getByRole('textbox', { name: 'Password' }).fill('test1234');
+  await page.getByRole('button', { name: 'Login' }).click();
+  await page.getByText('AutomationExercise Full-').first().click();
+  await page.getByRole('link', { name: ' Products' }).click();
+  await page.locator('iframe[name="aswift_3"]').contentFrame().getByRole('button', { name: 'Close ad' }).click();
+  await page.getByRole('textbox', { name: 'Search Product' }).click();
+  await page.getByRole('textbox', { name: 'Search Product' }).fill('Tshirt');
+  await page.getByRole('textbox', { name: 'Search Product' }).press('Enter');
+  await page.locator('#submit_search').click();
+  await page.getByText('Add to cart').nth(1).click();
 });
